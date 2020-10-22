@@ -59,5 +59,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  require 'support/database_cleaner'
+  
   config.include Features, type: :feature
 end
