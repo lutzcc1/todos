@@ -7,6 +7,12 @@ class CompletionsController < ApplicationController
     private
 
     def todos
-        current_user.todos.find(params[:todo_id]).touch :completed_at
+        todo = current_user.todos.find(params[:todo_id])
+        
+        unless todo.completed?
+            todo.touch :completed_at
+        else
+            todo.update(completed_at: nil)
+        end
     end
 end
